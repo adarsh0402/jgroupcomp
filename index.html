@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="transparent_logo.ico">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
   <script src="https://use.fontawesome.com/03f8a0ebd4.js"></script>
@@ -72,6 +73,32 @@
     /* CSS styles for main content */
     .main-content {
       display: none;
+    }
+
+    @keyframes colorChange {
+      0% {
+        color: blue;
+      }
+
+      25% {
+        color: green;
+      }
+
+      50% {
+        color: maroon;
+      }
+
+      75% {
+        color: black;
+      }
+
+      100% {
+        color: blue;
+      }
+    }
+
+    .animate-color-change {
+      animation: colorChange 10s infinite;
     }
   </style>
   <script>
@@ -310,6 +337,146 @@
     <!-- header ends -->
 
     <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+      <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+        <div class="text-center md:border-r animate-color-change p-8">
+          <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl"><span class="counter" data-end-value="30">0</span> Yrs
+          </h6>
+          <p class="text-sm font-medium tracking-widest text-gray-800 uppercase lg:text-base">
+            Legacy
+          </p>
+        </div>
+        <div class="text-center md:border-r animate-color-change p-8">
+          <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl"><span class="counter" data-end-value="27">0</span>+
+          </h6>
+          <p class="text-sm font-medium tracking-widest text-gray-800 uppercase lg:text-base">
+            Countries
+          </p>
+        </div>
+        <div class="text-center md:border-r animate-color-change p-8">
+          <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl"><span class="counter" data-end-value="150">0</span>Cr
+          </h6>
+          <p class="text-sm font-medium tracking-widest text-gray-800 uppercase lg:text-base">
+            Turnover
+          </p>
+        </div>
+        <div class="text-center animate-color-change p-8">
+          <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl"><span class="counter" data-end-value="1000">0</span>+
+          </h6>
+          <p class="text-sm font-medium tracking-widest text-gray-800 uppercase lg:text-base">
+            Worldwide
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      function animateValue(element, start, end, duration) {
+        let startTime = null;
+        const range = end - start;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          const progress = timestamp - startTime;
+          const percentage = Math.min(progress / duration, 1);
+          const value = Math.floor(percentage * range + start);
+          element.textContent = value.toLocaleString();
+          if (progress < duration) {
+            requestAnimationFrame(step);
+          } else {
+            element.textContent = end.toLocaleString();
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach((counter) => {
+        const endValue = parseFloat(counter.dataset.endValue);
+        setTimeout(() => {
+          animateValue(counter, 0, endValue, 2000);
+        }, 3000);
+      });
+    </script>
+
+
+
+
+
+
+
+
+
+    <!-- stats end -->
+
+    <!-- card start -->
+    <div class="flex justify-center">
+      <div class=" flex md:flex-row flex-col px-4 py-2 my-10 gap-y-7 gap-x-7 max-w-7xl ">
+        <div
+          class="bg-gradient-to-t from-gray-900 to-gray-600 border border-gray-200 rounded-xl drop-shadow-md shadow-current p-5 h-auto w-[300px] hover:shadow-lg hover:transform hover:scale-105 duration-500 ease-in-out ">
+          <div class="flex flex-col justify-center items-center text-white p-2 ">
+            <div class="flex justify-center my-3 font-medium md:tracking-tighter ">
+              <div class="text-3xl md:text-5xl">Firm A</div>
+            </div>
+            <div class="px-8 py-1 rounded-3xl font-medium bg-white text-stone-900 hover:bg-gray-100 cursor-pointer">
+              <a href="">Explore</a>
+            </div>
+            <div class="text-white text-sm my-4 border-t border-white flex flex-col justify-center items-center h-60">
+              <div class="m-1">Versatile bonding</div>
+              <div class="m-1">Strength and durabilityg</div>
+              <div class="m-1">Design flexibility</div>
+              <div class="m-1">Weight reduction</div>
+              <div class="m-1">Enhanced aesthetics</div>
+              <div class="m-1">Improved corrosion resistance</div>
+              <div class="m-1">Improved performance</div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-gradient-to-b from-orange-500 to-yellow-500 border border-gray-200 rounded-xl drop-shadow-md shadow-current p-5 h-auto w-[300px] hover:shadow-lg hover:transform hover:scale-105 duration-500 ease-in-out ">
+          <div class="flex flex-col justify-center items-center text-white p-2 ">
+            <div class="flex justify-center my-3 font-medium md:tracking-tighter ">
+              <div class="text-3xl md:text-5xl">Firm B</div>
+            </div>
+            <div class="px-8 py-1 rounded-3xl font-medium bg-white text-stone-900 hover:bg-gray-100 cursor-pointer">
+              <a href="">Explore</a>
+            </div>
+            <div class="text-white text-sm my-4 border-t border-white flex flex-col justify-center items-center h-60">
+              <div class="m-1">Enhancing aesthetics</div>
+              <div class="m-1">Surface protection</div>
+              <div class="m-1">Improved durability</div>
+              <div class="m-1">Easy application</div>
+              <div class="m-1">Surface preparation and repair</div>
+              <div class="m-1">Improved hygiene and cleanliness</div>
+              <div class="m-1">Environmentally friendly options</div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-gradient-to-br from-blue-700 via-blue-800 to-gray-900 border border-gray-200 rounded-xl drop-shadow-md shadow-current p-5 h-auto w-[300px] hover:shadow-lg hover:transform hover:scale-105 duration-500 ease-in-out ">
+          <div class="flex flex-col justify-center items-center text-white p-2 ">
+            <div class="flex justify-center my-3 font-medium md:tracking-tighter ">
+              <div class="text-3xl md:text-5xl">Firm C</div>
+            </div>
+            <div class="px-8 py-1 rounded-3xl font-medium bg-white text-stone-900 hover:bg-gray-100 cursor-pointer">
+              <a href="">Explore</a>
+            </div>
+            <div class="text-white text-sm my-4 border-t border-white flex flex-col justify-center items-center h-60">
+              <div class="m-1">UV protection</div>
+              <div class="m-1">Enhanced durability</div>
+              <div class="m-1">High gloss finish</div>
+              <div class="m-1">Fast curing time</div>
+              <div class="m-1">Chemical resistance</div>
+              <div class="m-1">Scratch and abrasion resistance</div>
+              <div class="m-1">Improved adhesion</div>
+              <div class="m-1">Versatile applications</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div class="grid row-gap-8 sm:row-gap-0 sm:grid-cols-2 lg:grid-cols-3">
         <div class="p-8 border-b sm:border-r">
           <div class="max-w-md text-center">
@@ -339,7 +506,8 @@
             </div>
             <h6 class="mb-2 font-semibold leading-5">Led coatings</h6>
             <p class="mb-3 text-sm text-gray-900">
-              Coat Your World with Vibrant Brilliance: Discover Our High-Quality Led coatings for Stunning Transformations!
+              Coat Your World with Vibrant Brilliance: Discover Our High-Quality Led coatings for Stunning
+              Transformations!
             </p>
           </div>
         </div>
@@ -415,73 +583,6 @@
     </div>
     <!--  -->
 
-    <!-- card start -->
-    <div class="flex justify-center">
-      <div class=" flex md:flex-row flex-col px-4 py-2 my-10 gap-y-7 gap-x-7 max-w-7xl ">
-        <div
-          class="bg-gradient-to-t from-gray-900 to-gray-600 border border-gray-200 rounded-xl drop-shadow-md shadow-current p-5 h-auto w-[300px] hover:shadow-lg hover:transform hover:scale-105 duration-500 ease-in-out ">
-          <div class="flex flex-col justify-center items-center text-white p-2 ">
-            <div class="flex justify-center my-3 font-medium md:tracking-tighter ">
-              <div class="text-3xl md:text-5xl">Firm A</div>
-            </div>
-            <div class="px-8 py-1 rounded-3xl font-medium bg-white text-stone-900 hover:bg-gray-100 cursor-pointer">
-              <a href="">Explore</a>
-            </div>
-            <div class="text-white text-sm my-4 border-t border-white flex flex-col justify-center items-center h-60">
-              <div class="m-1">Versatile bonding</div>
-              <div class="m-1">Strength and durabilityg</div>
-              <div class="m-1">Design flexibility</div>
-              <div class="m-1">Weight reduction</div>
-              <div class="m-1">Enhanced aesthetics</div>
-              <div class="m-1">Improved corrosion resistance</div>
-              <div class="m-1">Improved performance</div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="bg-gradient-to-b from-orange-500 to-yellow-500 border border-gray-200 rounded-xl drop-shadow-md shadow-current p-5 h-auto w-[300px] hover:shadow-lg hover:transform hover:scale-105 duration-500 ease-in-out ">
-          <div class="flex flex-col justify-center items-center text-white p-2 ">
-            <div class="flex justify-center my-3 font-medium md:tracking-tighter ">
-              <div class="text-3xl md:text-5xl">Firm B</div>
-            </div>
-            <div class="px-8 py-1 rounded-3xl font-medium bg-white text-stone-900 hover:bg-gray-100 cursor-pointer">
-              <a href="">Explore</a>
-            </div>
-            <div class="text-white text-sm my-4 border-t border-white flex flex-col justify-center items-center h-60">
-              <div class="m-1">Enhancing aesthetics</div>
-              <div class="m-1">Surface protection</div>
-              <div class="m-1">Improved durability</div>
-              <div class="m-1">Easy application</div>
-              <div class="m-1">Surface preparation and repair</div>
-              <div class="m-1">Improved hygiene and cleanliness</div>
-              <div class="m-1">Environmentally friendly options</div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="bg-gradient-to-br from-blue-700 via-blue-800 to-gray-900 border border-gray-200 rounded-xl drop-shadow-md shadow-current p-5 h-auto w-[300px] hover:shadow-lg hover:transform hover:scale-105 duration-500 ease-in-out ">
-          <div class="flex flex-col justify-center items-center text-white p-2 ">
-            <div class="flex justify-center my-3 font-medium md:tracking-tighter ">
-              <div class="text-3xl md:text-5xl">Firm C</div>
-            </div>
-            <div class="px-8 py-1 rounded-3xl font-medium bg-white text-stone-900 hover:bg-gray-100 cursor-pointer">
-              <a href="">Explore</a>
-            </div>
-            <div class="text-white text-sm my-4 border-t border-white flex flex-col justify-center items-center h-60">
-              <div class="m-1">UV protection</div>
-              <div class="m-1">Enhanced durability</div>
-              <div class="m-1">High gloss finish</div>
-              <div class="m-1">Fast curing time</div>
-              <div class="m-1">Chemical resistance</div>
-              <div class="m-1">Scratch and abrasion resistance</div>
-              <div class="m-1">Improved adhesion</div>
-              <div class="m-1">Versatile applications</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--  -->
     <div class="flex justify-center ">
       <div class="flex flex-col justify-center  my-10 w-[90%] space-y-28 lg:space-y-24 max-w-7xl">
         <div class="flex flex-col justify-center items-center ">
@@ -539,11 +640,14 @@
       <div class="bg-black p-3 space-y-10 md:grid grid-cols-2 md:-mt-6 lg:grid-cols-4">
         <div class="w-1/2 md:ml-24 md:mt-9 md:w-3/4">
           <h1 class="text-orange-400 text-xl font-medium">J-Group</h1> <br />
-          <p class="text-gray-300/80 text-base hover:text-yellow-300 cursor-none"> K-13, Panki Industrial Area, Site-3 <br /> Kanpur, Uttar Pradesh 208022 <br /> India </p> <br />
+          <p class="text-gray-300/80 text-base hover:text-yellow-300 cursor-none"> K-13, Panki Industrial Area, Site-3
+            <br /> Kanpur, Uttar Pradesh 208022 <br /> India
+          </p> <br />
           <p class="text-gray-200/80 text-base hover:text-yellow-300 cursor-pointer"> <strong
               class="tracking-wide text-orange-400 font-normal">Phone:</strong> +91 9839091416 </p>
           <p class="text-gray-200/80 text-base hover:text-yellow-300 cursor-pointer"> <strong
-              class="tracking-wide text-orange-400 font-normal">Email:</strong> <a href="mailto:jaimurjani@jgroup.co.in">jaimurjani@jgroup.co.in</a> </p>
+              class="tracking-wide text-orange-400 font-normal">Email:</strong> <a
+              href="mailto:jaimurjani@jgroup.co.in">jaimurjani@jgroup.co.in</a> </p>
         </div>
         <div class="leading-9 md:w-2/4 md:order-3 md:ml-24">
           <h1 class="text-orange-400 text-xl font-medium tracking-[0.030rem]"> Useful Links </h1>
